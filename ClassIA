@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Grading System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #e7f9e7;
+            border: 1px solid #d4f0d4;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Grading System</h1>
+    </header>
+    <main>
+        <form id="gradingForm">
+            <div class="input-group">
+                <label for="projectName">Project Name:</label>
+                <input type="text" id="projectName" name="projectName" placeholder="Enter the project name">
+            </div>
+            <div class="input-group">
+                <label for="criteria">Select Criteria:</label>
+                <select id="criteria" name="criteria">
+                    <option value="design">Design</option>
+                    <option value="functionality">Functionality</option>
+                    <option value="innovation">Innovation</option>
+                    <option value="presentation">Presentation</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="description">Project Description:</label>
+                <textarea id="description" name="description" rows="5" placeholder="Describe the project"></textarea>
+            </div>
+            <button type="button" onclick="gradeProject()">Submit for Grading</button>
+        </form>
+        <div id="results" class="results" style="display:none;">
+            <h3>Grading Results</h3>
+            <p id="resultsText">The AI will display the grading results here.</p>
+        </div>
+    </main>
+
+    <script>
+        function gradeProject() {
+            const projectName = document.getElementById('projectName').value;
+            const criteria = document.getElementById('criteria').value;
+            const description = document.getElementById('description').value;
+
+            if (!projectName || !description) {
+                alert('Please fill out all fields before submitting.');
+                return;
+            }
+
+            // Simulating AI grading
+            const results = `The project "${projectName}" has been graded based on the criteria "${criteria}". Overall Score: ${Math.floor(Math.random() * 40) + 60}/100`;
+
+            document.getElementById('resultsText').textContent = results;
+            document.getElementById('results').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
